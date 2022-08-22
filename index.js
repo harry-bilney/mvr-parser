@@ -2,7 +2,7 @@ const fs = require('fs')
 const xml2js = require('xml2js')
 const parser = new xml2js.Parser({ attrkey: "ATTR" })
 
-export class Fixture {
+class Fixture {
     constructor(gdtfFixture) {
         this.uuid = gdtfFixture.uuid,
         this.name = gdtfFixture.name,
@@ -28,7 +28,7 @@ export class Fixture {
     }
 }
 
-export class GDTFFixture {
+class GDTFFixture {
     constructor(fixture) {
         this.name = fixture.ATTR.name,
         this.uuid = fixture.ATTR.uuid,
@@ -45,7 +45,7 @@ export class GDTFFixture {
     }
 }
 
-export class GeneralSceneDescription {
+class GeneralSceneDescription {
     constructor(xml) {
         this.verMajor = xml.GeneralSceneDescription.ATTR.verMajor,
         this.verMinor = xml.GeneralSceneDescription.ATTR.verMinor,
@@ -55,7 +55,7 @@ export class GeneralSceneDescription {
     }
 }
 
-export class Layer {
+class Layer {
     constructor(layer) {
         this.name = layer.Layer[0].ATTR.name,
         this.uuid = layer.Layer[0].ATTR.uuid,
@@ -63,7 +63,7 @@ export class Layer {
     }
 }
 
-export class MVR {
+class MVR {
     constructor(gsd, layers, fixtures) {
         this.gsd = gsd,
         this.layers = layers,
@@ -71,7 +71,7 @@ export class MVR {
     }
 }
 
-export function parse(arg) {
+function parse(arg) {
     let file = fs.readFileSync(arg, 'utf-8')
     let layers = []
     let gdtf_fixtures = []
@@ -99,6 +99,7 @@ export function parse(arg) {
     gdtf_fixtures.forEach(u => {
         fixtures.push(new Fixture(u))
     })
-
-    console.log(fixtures[0])
+    return MVRObj
 }
+
+module.exports = Fixture, GDTFFixture, GeneralSceneDescription, Layer, MVR, parse
