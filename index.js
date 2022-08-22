@@ -102,4 +102,4 @@ function parse(arg) {
     return MVRObj
 }
 
-module.exports = Fixture, GDTFFixture, GeneralSceneDescription, Layer, MVR, parse
+module.exports = parse

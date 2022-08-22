@@ -1,6 +1,6 @@
 {
   "name": "mvr-parser",
-  "version": "1.0.0-beta3",
+  "version": "1.0.1-alpha1",
   "description": "",
   "main": "index.js",
   "scripts": {
