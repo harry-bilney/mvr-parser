@@ -1,0 +1,17 @@
+{
+  "name": "mvr-parser",
+  "version": "1.0.0-beta1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Harry Bilney",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "xml2js": "^0.4.23"
+  }
+}
