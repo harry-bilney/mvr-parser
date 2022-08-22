@@ -2,7 +2,7 @@ const fs = require('fs')
 const xml2js = require('xml2js')
 const parser = new xml2js.Parser({ attrkey: "ATTR" })
 
-class Fixture {
+export class Fixture {
     constructor(gdtfFixture) {
         this.uuid = gdtfFixture.uuid,
         this.name = gdtfFixture.name,
@@ -28,7 +28,7 @@ class Fixture {
     }
 }
 
-class GDTFFixture {
+export class GDTFFixture {
     constructor(fixture) {
         this.name = fixture.ATTR.name,
         this.uuid = fixture.ATTR.uuid,
@@ -45,7 +45,7 @@ class GDTFFixture {
     }
 }
 
-class GeneralSceneDescription {
+export class GeneralSceneDescription {
     constructor(xml) {
         this.verMajor = xml.GeneralSceneDescription.ATTR.verMajor,
         this.verMinor = xml.GeneralSceneDescription.ATTR.verMinor,
@@ -55,7 +55,7 @@ class GeneralSceneDescription {
     }
 }
 
-class Layer {
+export class Layer {
     constructor(layer) {
         this.name = layer.Layer[0].ATTR.name,
         this.uuid = layer.Layer[0].ATTR.uuid,
@@ -63,7 +63,7 @@ class Layer {
     }
 }
 
-class MVR {
+export class MVR {
     constructor(gsd, layers, fixtures) {
         this.gsd = gsd,
         this.layers = layers,
@@ -71,7 +71,7 @@ class MVR {
     }
 }
 
-function parse(arg) {
+export function parse(arg) {
     let file = fs.readFileSync(arg, 'utf-8')
     let layers = []
     let gdtf_fixtures = []
@@ -102,5 +102,3 @@ function parse(arg) {
 
     console.log(fixtures[0])
 }
-
-module.exports = Fixture, GDTFFixture, GeneralSceneDescription, Layer, MVR, parse
